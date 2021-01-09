@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<meta charset="utf-8"/>
+<title>Employee List</title>
+</head>
+<body>
+<div align="center">
+    <h1>Employee List</h1>
+    <a href="new">Create New Employee</a>
+    <br/><br/>
+    <table border="1" cellpadding="10">
+        <thead>
+            <tr>
+                <th>Employee ID</th>
+                <th>Name</th>
+                <th>Email</th>
+                
+                <th>Action</th>
+                
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:each="employee : ${listempl}">
+            	<td th:text="${employee.id}">Employee Id</td>
+                <td th:text="${employee.name}">Name</td>
+                <td th:text="${employee.email}">Email</td>
+            
+                <td>
+                	<a th:href="@{'/edit/' + ${employee.id}}">Edit</a>
+                	&nbsp;&nbsp;&nbsp;
+                	<a th:href="@{'/delete/' + ${employee.id}}">Delete</a>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>    
+</body>
+</html>
